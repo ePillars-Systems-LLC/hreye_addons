@@ -3,6 +3,7 @@ from . import hr
 from . import hr_gratuity
 from . import leave_salary
 from . import hr_payroll
+from . import wps
 from . import hr_resignation
 from . import hr_leave_type
 from . import hr_forms
