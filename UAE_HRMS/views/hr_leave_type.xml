@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- <record id="employee_data_reminder" model="ir.cron">
+            <field name="name">WTC Leave Accrual</field>
+            <field name="model_id" ref="model_hr_leave_type"/>
+            <field name="state">code</field>
+            <field name="code">model.run_leave_allocation()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+        </record> -->
+
+
+        <record id="edit_holiday_status_form_uae" model="ir.ui.view">
+            <field name="name">hr.leave.type.form.uae</field>
+            <field name="model">hr.leave.type</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='leave_validation_type']" position="after">
+            		<field name="half_paid"/>
+            		<field name="annual_leave"/>
+            		<field name="exceptional_annual_leave"/>
+            		<field name="exceptional_sick_leave"/>
+                    <field name="code"/>
+            	</xpath>
+            	<!-- <xpath expr="//field[@name='validation_type']" position="replace">
+                    <field name="validation_type" widget="radio" invisible="0"/>
+            	</xpath> -->
+            </field>
+        </record>
+        
+        <!-- <record id="hr_leave_view_form_uae" model="ir.ui.view">
+            <field name="name">hr.leave.view.form.uae</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <field name="last_leave_from" invisible="0"/>
+                	<field name="last_leave_to" invisible="0"/>
+                    <field name="approval_required_from" />
+            	</xpath>
+                <xpath expr="//button[@name='action_approve']" position="replace">
+                 <button string="Approve" name="action_approve" states="confirm" type="object" class="oe_highlight"
+                    attrs="{'invisible': ['|', ('can_approve', '=', False), ('state', 'not in', ('confirm','validate1','validate2'))]}"/>
+                </xpath>
+            </field>
+        </record> -->
+
+        <!-- <record id="hr_leave_view_form_manager_uae" model="ir.ui.view">
+            <field name="name">hr.leave.view.form.manager.uae</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <field name="last_leave_from" invisible="0" readonly="0"/>
+                	<field name="last_leave_to" invisible="0" readonly="0"/>
+                    <field name="approval_required_from" />
+            	</xpath>
+            </field>
+        </record>
+        <record id="hr_leave_view_form_inherited" model="ir.ui.view">
+            <field name="name">hr.leave.view.form.inherited</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_validate']" position="replace">
+                    <button string="Validate" name="action_validate" attrs="{'invisible':['|',('approval_required_from','!=',False),('state','!=','validate1')]}" type="object" groups="hr_holidays.group_hr_holidays_manager" class="oe_highlight"/>
+            	    <button string="Cancel" name="action_cancel_leave"  type="object" class="oe_highlight"/>
+
+                </xpath>
+
+
+            </field>
+        </record>  <record id="hr_leave_view_tree_inherited" model="ir.ui.view">
+            <field name="name">hr.leave.view.form.inherited</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_approve']" position="replace">
+               <button string="Approve" name="action_approve" type="object"
+                    icon="fa-check text-success"
+                    states="confirm"
+                    groups="hr_holidays.group_hr_holidays_user" invisible="1"/>
+            </xpath>
+                <xpath expr="//button[@name='action_validate']" position="replace">
+                <button string="Validate" name="action_approve" type="object"
+                    icon="fa-check text-success"
+                    states="validate1,validate2"
+                    groups="hr_holidays.group_hr_holidays_manager"/>
+            	</xpath>
+                   <xpath expr="//button[@name='action_approve']" position="after">
+                       <button string="Validate" name="action_validate" type="object"
+                    icon="fa-check text-success"
+                    states="validate1"
+                    groups="hr_holidays.group_hr_holidays_manager" invisible="1"/>
+                   </xpath>
+            </field>
+        </record>
+
+
+        <record id="hr_leave_allocation_view_form_uae" model="ir.ui.view">
+            <field name="name">hr.leave.allocation.view.form.uae</field>
+            <field name="model">hr.leave.allocation</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="after">
+                	<field name="emp_joining_date"/>
+                	<field name="last_updated_date" string="Last Updated Date" />
+            	</xpath>
+            </field>
+        </record> -->
+
+    </data>
+</odoo>

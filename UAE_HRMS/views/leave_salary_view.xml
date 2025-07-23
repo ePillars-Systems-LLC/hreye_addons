@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- HR Gratuity -->
+        
+       <record id="view_leave_salary_list" model="ir.ui.view">
+            <field name="name">leave.salary.list</field>
+            <field name="model">leave.salary</field>
+            <field name="arch" type="xml">
+                <list string="Gratuity">
+                    <field name="employee_id"/>
+                    <field name="leave_date"/>
+					<field name="state"/>
+                </list>
+            </field>
+        </record>
+        
+         <record id="view_leave_salary_form" model="ir.ui.view">
+            <field name="name">leave.salary.form</field>
+            <field name="model">leave.salary</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <form string="Gratuity" >
+                   <header>
+                   		<button name="button_confirm" string="Approve" invisible="state not in ('draft') or show_approval == False"  confirm="Are you sure you want to confirm?" type="object" class="oe_highlight"/>
+						<button name="button_post" string="Post Accounting Entries" groups="account.group_account_user" invisible="state  in ('draft','posted','cancelled')"  confirm="Are you sure to Post?" type="object" class="oe_highlight"/>
+
+						<button name="button_reset" string="Reset to Draft"  invisible="state  in ('draft','posted','confirm')"  confirm="Are you sure you want to reset the record to draft state?" type="object"/>                        
+                    	<field name="state" widget="statusbar" statusbar_visible="draft,confirm,posted"/>
+                    </header>
+                     <sheet>                        
+						<group >
+                            <group>
+                                <field name="employee_id" required="1" readonly="state not in ('draft')" options="{'no_create':True}"/>
+                                <field name="leave_date" required="1" readonly="state not in ('draft')"/>
+                                <field name="payment_mode" required="1" readonly="state not in ('draft')"/>
+                                <field name="basic_salary" required="1" readonly="state not in ('draft')"/>
+                                <field name="leaves_balance"  string="No.of Leaves taken" required="1" readonly="state not in ('draft')"/>
+                                <field name="leave_salary_amount" required="1" readonly="state not in ('draft')"/>
+                                <field name="total" />
+                                <field name="air_ticket_amount" required="1" readonly="state not in ('draft')"/>
+                            </group>
+                            <group>
+                                <field name="account_access" invisible="True"/>
+                                <field name="show_approval" invisible="True"/>
+                                <field name="is_approver" invisible="True"/>
+                                <field name="journal_id" required="0" readonly="account_access == False or state not in ('draft', 'confirm')"/>
+                                <field name="debit_id" required="0" readonly="account_access == False or state not in ('draft', 'confirm')"/>
+                                <field name="debit_airticket_id" required="0" readonly="account_access == False or state not in ('draft', 'confirm')"/>
+                                <field name="credit_id" required="0" readonly="account_access == False or state not in ('draft', 'confirm')"/>
+                                <field name="move_id" required="0" readonly="account_access == False or state not in ('posted')"/>
+                                <field name="approval_required_from" readonly="1"/>
+                            </group>
+                        </group>
+						
+                    </sheet>
+					
+					 <chatter/>
+					
+               </form>
+            </field>
+        </record>
+            
+        <record id="action_view_leave_salary" model="ir.actions.act_window">
+            <field name="name">Leave Salary</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">leave.salary</field>           
+            <field name="view_mode">list,form</field>
+            <field name="view_id" eval="view_leave_salary_list"/>
+        </record>
+        <menuitem name="Requests"
+				  id="menu_employee_allowances"
+				  parent="hr.menu_hr_root"
+				  sequence="50"/>
+
+        <menuitem name="Leave Salary"
+				  action="action_view_leave_salary"
+				  id="menu_action_view_leave_salary"
+				  parent="menu_employee_allowances"
+                  groups="hr.group_hr_manager,hr.group_hr_user"
+				  sequence="50"/>
+              
+  
+    </data>
+</odoo>

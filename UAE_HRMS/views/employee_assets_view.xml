@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		
+		
+
+        <!-- HR Gratuity -->
+        
+       <record model="ir.ui.view" id="view_employee_asset_list">
+            <field name="name">employee.asset.list</field>
+            <field name="model">employee.asset</field>
+            <field name="arch" type="xml">
+                <list string="Assets">
+                    <field name="name"/>
+                    <field name="type"/>
+					<field name="brand"/>
+					<field name="model"/>
+					<field name="serial_number"/>
+					<field name="date_of_allocation"/>
+					<field name="date_returned"/>
+					<field name="date_of_purchase"/>
+                </list>
+            </field>
+        </record>
+        
+         <record id="view_employee_asset_form" model="ir.ui.view">
+            <field name="name">employee.asset.form</field>
+            <field name="model">employee.asset</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <form string="Assets" >
+                     <sheet>                        
+						<group colspan="4" col="4">
+							<field name="name" required="1"/>
+							<field name="type"/>
+							<field name="brand"/>
+							<field name="model"/>
+							<field name="serial_number"/>
+							<field name="date_of_allocation" readonly="1" force_save="1"/>
+							<field name="date_returned" readonly="1" force_save="1"/>
+							<field name="date_of_purchase"/>
+							<field name="active"/>
+							<field name="employee_id" readonly="1" force_save="1"/>
+                        </group>
+                    </sheet>
+					
+					
+               </form>
+            </field>
+        </record>
+            
+        <record id="action_view_employee_asset" model="ir.actions.act_window">
+            <field name="name">Assets</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.asset</field>           
+            <field name="view_mode">list,form</field>
+            <field name="view_id" eval="view_employee_asset_list"/>
+        </record>
+
+        <menuitem name="Assets"
+				  action="action_view_employee_asset"
+				  id="menu_action_view_employee_asset"
+				  parent="hr.menu_human_resources_configuration"
+                  groups="hr.group_hr_manager,hr.group_hr_user"
+				  sequence="1"/>
+              
+  
+    </data>
+</odoo>
