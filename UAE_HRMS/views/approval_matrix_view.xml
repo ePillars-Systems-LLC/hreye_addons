@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+       <record model="ir.ui.view" id="view_approval_matrix_list">
+            <field name="name">approval.matrix.list</field>
+            <field name="model">approval.matrix</field>
+            <field name="arch" type="xml">
+                <list string="Approval Matrix">
+                    <field name="type"/>
+                </list>
+            </field>
+        </record>
+        
+         <record id="view_approval_matrix_form" model="ir.ui.view">
+            <field name="name">approval.matrix.form</field>
+            <field name="model">approval.matrix</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <form string="Approval Matrix">
+                     <sheet>                        
+						<group >
+                            <field name="type" required="1"/>
+                        </group>
+                        <group string="Approval Users">
+                            	<field name="lines" nolabel="1">
+                            		<list editable="top">
+                            			<field name="approval_order"/>
+	                        			<field name="from_amount" invisible="1"/>
+	                        			<field name="user_id"/>  
+	                        			<field name="job_id" invisible="1"/>
+	                        			<field name="requester_or_manager" invisible="1"/>
+	                        		</list>
+                                </field>
+							</group>
+                    </sheet>
+					<chatter/>
+					
+               </form>
+            </field>
+        </record>
+            
+        <record id="action_view_approval_matrix" model="ir.actions.act_window">
+            <field name="name">Approval Matrix</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">approval.matrix</field>           
+            <field name="view_mode">list,form</field>
+            <field name="view_id" eval="view_approval_matrix_list"/>
+        </record>
+
+        <menuitem name="Approval Matrix"
+				  action="action_view_approval_matrix"
+				  id="menu_action_approval_matrix"
+				  parent="hr.menu_human_resources_configuration"   groups="hr.group_hr_manager,hr.group_hr_user" 
+				  sequence="1"/>
+				  
+		
+		<record id="view_account_analytic_account_form_multi" model="ir.ui.view">
+            <field name="name">analytic.analytic.account.form.inherit</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+            	
+	            <xpath expr="//field[@name='partner_id']" position="after">
+	            	<field name="responsible_department"/>
+	            </xpath>
+	            
+	       </field>
+        </record>
+              
+  
+    </data>
+</odoo>
