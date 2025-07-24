@@ -11,6 +11,7 @@
     ],
     'data': [
         'security/security_group.xml',
+        'wizard/payroll_report_wiz.xml',
         # 'data/hr_payroll_data.xml',
         'views/hr_gratuity_view.xml',
         'views/hr_resignation_view.xml',

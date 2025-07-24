@@ -21,6 +21,8 @@ access_leave_salary,access_leave_salary,model_leave_salary,hr.group_hr_manager,1
 access_leave_salary_selfservice,access_leave_salary_selfservice,model_leave_salary,UAE_HRMS.group_ess,1,0,0,0
 access_hr_employee_request_user,access_hr_employee_request,model_hr_employee_request,base.group_user,1,1,1,1
 access_payroll_wps,access_payroll_wps,model_payroll_wps,hr.group_hr_manager,1,1,1,1
+access_hr_employee_payroll_report_wiz,access_hr_employee_payroll_report_wiz,model_payroll_report_wiz,hr.group_hr_manager,1,1,1,1
+access_hr_employee_payroll_report_excel,access_hr_employee_payroll_report_excel,model_payroll_report_excel,hr.group_hr_manager,1,1,1,1
 
 
 
