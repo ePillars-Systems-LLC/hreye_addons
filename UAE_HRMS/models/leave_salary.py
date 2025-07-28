@@ -35,6 +35,8 @@ class leave_salary(models.Model):
                 [('matrix_id.type', '=', 'leave_salary'), ('user_id', '=', self.env.uid)])
             if matrix_line:
                 req.is_approver = True
+            else:
+                req.is_approver = False
     @api.depends('leave_salary_amount','air_ticket_amount')
     def compute_total(self):
         for sal in self:

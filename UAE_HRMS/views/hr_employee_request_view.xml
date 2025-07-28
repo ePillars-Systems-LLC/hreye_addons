@@ -22,8 +22,8 @@
                        </div>
                        <group >
                             <group>
-                                <field name="employee_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'
-                                    readonly="state not in ('draft')"/>
+                                
+                                <field name="employee_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}' readonly="1"/>
                                 <field name="request_date"  readonly="state not in ('draft')"/>
                                     <field name="request_type" required="1"  readonly="state not in ('draft')"/>
                                 <field name="purpose" required="1"  readonly="state not in ('draft')"/>
@@ -61,7 +61,7 @@
             <field name="context">{}</field>
         </record>
 
-        <menuitem action="action_hr_employee_request" name="Other" id="menu_hr_employee_request"
+        <menuitem action="action_hr_employee_request" name="Document Request" id="menu_hr_employee_request"
                   parent="UAE_HRMS.menu_employee_allowances" sequence="2"/>
 
     </data>

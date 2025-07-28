@@ -304,38 +304,32 @@
                 </xpath>
             </field>
         </record>
-        
-        <!-- Self service can view only his master only -->
-        <record id="open_view_employee_list_ess" model="ir.actions.act_window">
-            <field name="name">My Profile</field>
-            <field name="res_model">hr.employee</field>            
-            <field name="view_mode">kanban,form</field>
-            <field name="view_id" eval="False"/>
-            <field name="domain">[('user_id', '=', uid)]</field>
-            <field name="search_view_id" ref="hr.view_employee_filter"/>
-        </record>
-        
-       <menuitem
-           id="hr.menu_open_view_employee_list_my"
-           action="hr.open_view_employee_list_my"
-           parent="hr.menu_hr_root"
-           sequence="1" groups="hr.group_hr_user"/>
-           
-        <menuitem
-           id="UAE_HRMS.menu_open_view_employee_list_ess"
-           action="UAE_HRMS.open_view_employee_list_ess"
-           parent="hr.menu_hr_root"
-           sequence="1"/> 
-           
-        
 
-        <record id="open_view_employee_list_ess_manager" model="ir.actions.act_window">
-            <field name="name">My Team</field>
-            <field name="res_model">hr.employee</field>           
-            <field name="view_mode">kanban,form</field>
+        <record id="open_view_employee_profile" model="ir.actions.act_window">
+            <field name="name">My Profile</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'my_profile': True}</field>
             <field name="view_id" eval="False"/>
-            <field name="domain">[('parent_id.user_id','=',uid)] </field>
             <field name="search_view_id" ref="hr.view_employee_filter"/>
+            <field name="domain">[('user_id','=',uid)]</field>
         </record>
+        
+        <menuitem 
+            action="open_view_employee_profile" 
+            name="My Profile" 
+            id="menu_open_view_employee_profile" 
+            sequence="0" 
+            parent="hr.menu_hr_root" 
+            groups="base.group_user"/>
+       
+
+       
+      
+
+            
+       
+       
         
 </odoo>

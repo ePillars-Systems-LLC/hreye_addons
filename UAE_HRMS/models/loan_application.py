@@ -138,6 +138,8 @@ class loan_application(models.Model):
             date_list = []
             amount = self.amount
             months = self.term
+            if months <= 0:
+                raise ValidationError(_("Months should be greter than zero."))
             permonth_amount = amount/months
             balance_amt = self.amount
             for payment in range(months):
@@ -175,12 +177,14 @@ class loan_application(models.Model):
                 adv.show_approval = True
             else:
                 adv.show_approval = False
-    
+
     def compute_is_approver(self):
         for adv in self:
             matrix_line = self.env['approval.matrix.line'].search([('matrix_id.type','=','advance'),('user_id','=',self.env.uid)])
             if matrix_line:
                 adv.is_approver = True
+            else:
+                adv.is_approver = False
 
     @api.returns('self')
     def _default_employee_get(self):

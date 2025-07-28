@@ -17,14 +17,18 @@ class HrEmployeeRequest(models.Model):
             else:
                 req.show_approval = False
 
+    
+
     def compute_is_approver(self):
         for req in self:
             matrix_line = self.env['approval.matrix.line'].search(
                 [('matrix_id.type', '=', 'hr_request'), ('user_id', '=', self.env.uid)])
             if matrix_line:
                 req.is_approver = True
+            else:
+                req.is_approver = False
     name = fields.Char('Name')
-    employee_id = fields.Many2one('hr.employee','Employee',default=_default_employee_get,readonly=True)
+    employee_id = fields.Many2one('hr.employee','Employee',default=_default_employee_get)
     request_type = fields.Selection([('noc','NOC Letter'),('salary_cert','Salary Certificate'),('asset_change','Asset Change'),('bank_letter','Bank Letter'),('general_request','General Request')],'Request Type',tracking=True)
     purpose = fields.Text('Purpose')
     request_date = fields.Date('Request Date',tracking=True,default=fields.Date.today())
@@ -41,6 +45,7 @@ class HrEmployeeRequest(models.Model):
     show_approval = fields.Boolean(compute='compute_show_approval')
     approval_order = fields.Float("Approval Order")
     is_approver = fields.Boolean('Is approver', compute='compute_is_approver')
+    
 
     @api.model
     def create(self, vals):

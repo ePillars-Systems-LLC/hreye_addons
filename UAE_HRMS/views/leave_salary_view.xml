@@ -77,9 +77,10 @@
         <menuitem name="Leave Salary"
 				  action="action_view_leave_salary"
 				  id="menu_action_view_leave_salary"
-				  parent="menu_employee_allowances"
-                  groups="hr.group_hr_manager,hr.group_hr_user"
-				  sequence="50"/>
+				  parent="UAE_HRMS.menu_employee_allowances"                  
+				  sequence="2" groups="base.group_user"/>
+
+                  
               
   
     </data>
