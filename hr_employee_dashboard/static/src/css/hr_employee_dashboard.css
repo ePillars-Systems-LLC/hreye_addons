@@ -1,0 +1,1061 @@
+/* Employee Dashboard Styles */
+.o_employee_dashboards {
+  background-color: #f8f9fa;
+}
+
+.o_employee_dashboard {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.o_employee_dashboard_content {
+  padding: 0;
+}
+
+.o_employee_dashboard_row1,
+.o_employee_dashboard_row2,
+.o_employee_dashboard_row3,
+.o_employee_dashboard_row4 {
+  margin-bottom: 20px;
+}
+
+/* Role-based Dashboard Row 4 Styles */
+.o_employee_dashboard_row4 {
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.o_employee_dashboard_row4 .o_employee_dashboard_metrics_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+}
+
+.o_employee_dashboard_unit {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  min-height: 180px; /* Reduced from 300px */
+}
+
+.o_employee_dashboard_half_unit {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 140px;
+}
+
+.o_employee_dashboard_title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #3498db;
+  text-align: center;
+}
+
+.o_employee_dashboard_thumbnail {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.o_employee_dashboard_thumbnail img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 3px solid #3498db;
+}
+
+.default-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+}
+
+.o_employee_dashboard_name_title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.o_employee_dashboard_name_title h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.o_employee_dashboard_name_title h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.o_employee_dashboard_info_user {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.o_employee_dashboard_info_user span {
+  margin: 0 8px;
+  color: #3498db;
+  font-size: 18px;
+}
+
+.o_employee_dashboard_info_user_l {
+  text-align: center;
+}
+
+.innerbox {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.innerbox a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.innerbox a:hover {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+.o_employee_dashboard_count {
+  text-align: center;
+  padding: 20px;
+}
+
+.o_employee_dashboard_count a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.o_employee_dashboard_count a:hover {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.o_employee_dashboard_count .fa {
+  display: block;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #3498db;
+}
+
+/* Chart containers */
+.o_graph_gender_details_chart,
+.o_graph_nationality_details_chart,
+.o_graph_department_details_chart,
+.o_graph_attendance_details_chart,
+.o_graph_position_details_chart {
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+.o_graph_monthly_stats_chart {
+  height: 380px; /* Slightly reduced to fit within card padding */
+  margin-bottom: 15px;
+  width: 100%;
+  background: transparent; /* Ensure chart background is transparent */
+}
+
+/* Monthly Statistics Chart Specific Styling */
+.o_graph_monthly_stats_container {
+  width: 100% !important;
+  height: 380px !important;
+  background: transparent;
+}
+
+/* Age demography table */
+.o_employee_dashboard_row3 .table {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.o_employee_dashboard_row3 .table th {
+  background-color: #f8f9fa;
+  border-top: none;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.o_employee_dashboard_row3 .table td {
+  text-align: center;
+  padding: 6px 4px;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Dashboard row styling */
+.dash-row4 {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.dash-row4 .fa {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.dash-row4 .fa-male {
+  color: #3498db;
+}
+
+.dash-row4 .fa-female {
+  color: #e74c3c;
+}
+
+/* Button icons */
+.o_button_icon {
+  margin-right: 8px;
+}
+
+.hr-dashboard-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.dashboard-title i {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+.refresh-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 50px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.subsection-title {
+  color: #34495e;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 5px;
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.dashboard-section {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-default {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.card-warning {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.card-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.card-info {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-right: 20px;
+  opacity: 0.8;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-number {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.card-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.attendance-card {
+  background: white;
+  border: 2px solid #ecf0f1;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.attendance-status {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.status-indicator {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.status-checked-in {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.status-checked-out {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+}
+
+.status-unknown {
+  background: #95a5a6;
+  color: white;
+}
+
+.status-text {
+  flex: 1;
+}
+
+.status-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.status-time {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .o_employee_dashboard_unit {
+    min-height: auto;
+    margin-bottom: 15px;
+  }
+
+  .o_employee_dashboard_half_unit {
+    height: auto;
+    min-height: 120px;
+  }
+
+  .o_employee_dashboard_count a {
+    font-size: 18px;
+  }
+
+  .o_employee_dashboard_count .fa {
+    font-size: 28px;
+  }
+  .hr-dashboard-container {
+    padding: 10px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .cards-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    padding: 15px;
+  }
+
+  .card-number {
+    font-size: 1.5rem;
+  }
+
+  .attendance-status {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-section {
+    padding: 15px;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-right: 15px;
+  }
+
+  .status-indicator {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .o_employee_dashboards {
+    background: white !important;
+  }
+
+  .o_employee_dashboard_unit,
+  .o_employee_dashboard_half_unit {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+}
+
+/* Loading and error states */
+.alert {
+  margin: 20px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Role-based Dashboard Styles */
+.o_employee_dashboard_metrics_row {
+  margin-bottom: 30px;
+  padding: 20px 0;
+}
+
+/* Metric boxes - more compact version */
+.o_employee_dashboard_metrics_row .o_employee_dashboard_unit {
+  min-height: 140px; /* Even smaller for metric cards */
+  padding: 15px; /* Reduced padding */
+}
+
+.o_employee_dashboard_section_title {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.o_employee_dashboard_section_title h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 15px 0;
+  border-bottom: 3px solid #3498db;
+  display: inline-block;
+  min-width: 300px;
+}
+
+.o_employee_dashboard_section_title i {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+/* Metric Cards */
+.o_employee_dashboard_metric_card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  min-height: 100px;
+}
+
+.o_employee_dashboard_metric_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.o_employee_dashboard_metric_card.card-warning {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.o_employee_dashboard_metric_card.card-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.o_employee_dashboard_metric_card.card-info {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+}
+
+.o_employee_dashboard_metric_card.card-danger {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+}
+
+.metric-icon {
+  font-size: 3rem;
+  margin-right: 20px;
+  opacity: 0.8;
+  min-width: 60px;
+  text-align: center;
+}
+
+.metric-content {
+  flex: 1;
+}
+
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Employee Attendance Card */
+.o_employee_dashboard_attendance_card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-header {
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 15px;
+}
+
+.attendance-header h3 {
+  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.attendance-header i {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+.attendance-content {
+  text-align: center;
+}
+
+.attendance-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.status-indicator {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.status-indicator.status-checked-in {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.status-indicator.status-checked-out {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.status-indicator.status-not-checked {
+  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+}
+
+.status-details {
+  flex: 1;
+  text-align: left;
+}
+
+.status-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.status-times {
+  font-size: 1rem;
+  color: #7f8c8d;
+}
+
+.time-label {
+  font-weight: 500;
+  color: #34495e;
+}
+
+.time-value {
+  font-weight: 600;
+  color: #3498db;
+}
+
+/* Responsive Design for Metrics */
+@media (max-width: 768px) {
+  .o_employee_dashboard_metric_card {
+    padding: 15px;
+    min-height: 80px;
+  }
+
+  .metric-icon {
+    font-size: 2rem;
+    margin-right: 15px;
+    min-width: 40px;
+  }
+
+  .metric-number {
+    font-size: 1.8rem;
+  }
+
+  .metric-label {
+    font-size: 0.85rem;
+  }
+
+  .attendance-status {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .status-details {
+    text-align: center;
+  }
+
+  .status-indicator {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .o_employee_dashboard_section_title h2 {
+    font-size: 1.4rem;
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .o_employee_dashboard_metric_card {
+    padding: 12px;
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .metric-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .metric-number {
+    font-size: 1.5rem;
+  }
+
+  .status-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* Monthly Statistics Chart - Match other dashboard cards */
+.o_employee_dashboard_row3 .o_employee_dashboard_unit {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  min-height: 450px; /* Increased to accommodate larger chart */
+}
+
+.o_employee_dashboard_metrics_row .o_employee_dashboard_title {
+  font-size: 14px; /* Slightly smaller title */
+  margin-bottom: 10px; /* Reduced margin */
+  padding-bottom: 6px; /* Reduced padding */
+}
+
+.o_employee_dashboard_metrics_row .o_employee_dashboard_count {
+  padding: 10px; /* Reduced padding */
+}
+
+.o_employee_dashboard_metrics_row .o_employee_dashboard_count a {
+  font-size: 20px; /* Slightly smaller number */
+}
+
+.o_employee_dashboard_metrics_row .o_employee_dashboard_count .fa {
+  font-size: 28px; /* Smaller icon */
+  margin-bottom: 8px; /* Reduced margin */
+}
+
+/* Contact Icons Styling */
+.contact-icon {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.contact-icon:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+  transform: scale(1.2);
+  color: #3498db;
+}
+
+/* Contact Popup Overlay */
+.contact-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Contact Popup Modal */
+.contact-popup-modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Contact Popup Header */
+.contact-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 2px solid #ecf0f1;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.contact-popup-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.contact-popup-header i {
+  margin-right: 10px;
+}
+
+.contact-popup-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-popup-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Contact Popup Content */
+.contact-popup-content {
+  padding: 25px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #ecf0f1;
+  transition: all 0.3s ease;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:hover {
+  background-color: #f8f9fa;
+  margin: 0 -25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 8px;
+}
+
+.contact-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  font-size: 1.2rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.contact-icon-wrapper.phone {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+.contact-icon-wrapper.mobile {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.contact-icon-wrapper.email {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.contact-icon-wrapper.department {
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+}
+
+.contact-icon-wrapper.manager {
+  background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+}
+
+.contact-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-details label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-details span {
+  font-size: 1.1rem;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.contact-action-btn {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.contact-action-btn:hover {
+  background: linear-gradient(135deg, #229954 0%, #1e8449 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.contact-action-btn i {
+  margin-right: 5px;
+}
+
+/* Responsive Design for Contact Popup */
+@media (max-width: 768px) {
+  .contact-popup-modal {
+    width: 95%;
+    margin: 20px;
+  }
+
+  .contact-popup-header {
+    padding: 15px 20px;
+  }
+
+  .contact-popup-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .contact-popup-content {
+    padding: 20px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .contact-icon-wrapper {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .contact-details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-popup-header {
+    padding: 12px 15px;
+  }
+
+  .contact-popup-content {
+    padding: 15px;
+  }
+
+  .contact-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="hr_employee_dashboard.Dashboard" owl="1">
+        <div class="o_employee_dashboards" style="height: 100vh;">
+            <Layout display="{ controlPanel: {} }">
+                <t t-set-slot="control-panel-navigation-additional">
+                    <div class="d-flex gap-1">
+                        <button class="btn btn-primary" t-on-click="onPrint">Print</button>
+                        <button class="btn btn-secondary" t-on-click="refreshData">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </button>
+                    </div>
+                </t>
+                <div class="container-fluid overflow-auto border-bottom bg-view o_employee_dashboard" style="max-height: calc(100vh - 150px);">
+                    <t t-call="hr_employee_dashboard.dashboard_content"/>
+                </div>
+            </Layout>
+        </div>
+    </t>
+
+    <t t-name="hr_employee_dashboard.dashboard_content">
+        <div class="o_employee_dashboard_content">
+            <div class="container" id="dashboard_container">
+            
+                <!-- EXISTING DASHBOARD SECTIONS (User Profile, Demographics, Charts) -->
+                <!-- Keep all the existing dashboard sections here -->
+                <div class="row o_employee_dashboard_row1">
+                    <!-- User Profile Section -->
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">User Profile</div>
+                            <div class="o_employee_dashboard_thumbnail">
+                                <t t-if="state.dash_image">
+                                    <img t-att-src="'data:image/png;base64,'+ state.dash_image" alt="Image" class="img img-circle w-50 h-50"/>
+                                </t>
+                                <t t-else="">
+                                    <div class="default-avatar">
+                                        <i class="fa fa-user fa-3x"></i>
+                                    </div>
+                                </t>
+                            </div>
+                            <div class="o_employee_dashboard_name_title">
+                                <h1 t-if="state.dash_name"><span t-esc="state.dash_name"/></h1>
+                                <h3 t-if="state.dash_job_name"><span t-esc="state.dash_job_name"/></h3>
+                            </div>
+                            <div class="o_employee_dashboard_info_user">
+                                <span class="fa fa-phone contact-icon" role="img" aria-label="Phone" title="Phone" t-on-click="showContactPopup" data-contact-type="phone"/>
+                                <span class="fa fa-mobile contact-icon" role="img" aria-label="Mobile" title="Mobile" t-on-click="showContactPopup" data-contact-type="mobile"/>
+                                <span class="fa fa-envelope contact-icon" role="img" aria-label="Email" title="Email" t-on-click="showContactPopup" data-contact-type="email"/>
+                            </div>
+                            <div class="o_employee_dashboard_info_user_l">
+                                <div class="innerbox" id="dashboard_leaves_left">
+                                    <a href="#" t-on-click="openLeaves">
+                                        <span class="fa fa-fw o_button_icon fa-calendar"></span>
+                                        <t t-if="state.dash_leaves_count">
+                                            My Remaining Leaves - <span t-esc="state.dash_leaves_count"/>
+                                        </t>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gender Details -->
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">Gender Details</div>
+                            <div class="o_graph_gender_details_chart" t-ref="gender_chart"/>
+                            <div class="row dash-row4">
+                                <div class="col-6 text-center">
+                                    <span class="fa fa-fw o_button_icon fa-male"></span>
+                                    <t t-if="state.dash_male_count"><span t-esc="state.dash_male_count"/></t>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <span class="fa fa-fw o_button_icon fa-female"></span>
+                                    <t t-if="state.dash_female_count"><span t-esc="state.dash_female_count"/></t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nationality Details -->
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">Top Nationality Details</div>
+                            <div class="o_graph_nationality_details_chart" t-ref="nationality_chart"/>
+                        </div>
+                    </div>
+
+                    <!-- Department Details -->
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">Department Headcount</div>
+                            <div class="o_graph_department_details_chart" t-ref="department_chart"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Age Demographics and Other Charts -->
+                <div class="row o_employee_dashboard_row2">
+                    <!-- Age Demographics -->
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">Age Demography</div>
+                            <div class="row o_employee_dashboard_row3">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Age</th>
+                                            <th scope="col">Male</th>
+                                            <th scope="col">Female</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="color: #7C7BAD;">
+                                        <tr>
+                                            <td>&lt;25</td>
+                                            <td><t t-if="state.dash_age_les_24_m"><span t-esc="state.dash_age_les_24_m"/></t></td>
+                                            <td><t t-if="state.dash_age_les_24_f"><span t-esc="state.dash_age_les_24_f"/></t></td>
+                                            <t t-set="age_less_25_total" t-value="(state.dash_age_les_24_m || 0) + (state.dash_age_les_24_f || 0)"/>
+                                            <td><span t-esc="age_less_25_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>25-34</td>
+                                            <td><t t-if="state.dash_age_25_34_m"><span t-esc="state.dash_age_25_34_m"/></t></td>
+                                            <td><t t-if="state.dash_age_25_34_f"><span t-esc="state.dash_age_25_34_f"/></t></td>
+                                            <t t-set="age_25_34_total" t-value="(state.dash_age_25_34_m || 0) + (state.dash_age_25_34_f || 0)"/>
+                                            <td><span t-esc="age_25_34_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>35-44</td>
+                                            <td><t t-if="state.dash_age_35_44_m"><span t-esc="state.dash_age_35_44_m"/></t></td>
+                                            <td><t t-if="state.dash_age_35_44_f"><span t-esc="state.dash_age_35_44_f"/></t></td>
+                                            <t t-set="age_35_44_total" t-value="(state.dash_age_35_44_m || 0) + (state.dash_age_35_44_f || 0)"/>
+                                            <td><span t-esc="age_35_44_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>45-54</td>
+                                            <td><t t-if="state.dash_age_45_54_m"><span t-esc="state.dash_age_45_54_m"/></t></td>
+                                            <td><t t-if="state.dash_age_45_54_f"><span t-esc="state.dash_age_45_54_f"/></t></td>
+                                            <t t-set="age_45_54_total" t-value="(state.dash_age_45_54_m || 0) + (state.dash_age_45_54_f || 0)"/>
+                                            <td><span t-esc="age_45_54_total"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&gt;54</td>
+                                            <td><t t-if="state.dash_age_gre_54_m"><span t-esc="state.dash_age_gre_54_m"/></t></td>
+                                            <td><t t-if="state.dash_age_gre_54_f"><span t-esc="state.dash_age_gre_54_f"/></t></td>
+                                            <t t-set="age_greater_54_total" t-value="(state.dash_age_gre_54_m || 0) + (state.dash_age_gre_54_f || 0)"/>
+                                            <td><span t-esc="age_greater_54_total"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attendance Chart -->
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">Today's Attendance</div>
+                            <div class="o_graph_attendance_details_chart" t-ref="attendance_chart"/>
+                        </div>
+                    </div>
+
+                    <!-- Position Chart -->
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">Positions Count</div>
+                            <div class="o_graph_position_details_chart" t-ref="position_chart"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Statistics (Manager Only) -->
+                <div class="row o_employee_dashboard_row3" t-if="state.is_hr_manager">
+                    <div class="col-sm-12 col-lg-12">
+                        <div class="o_employee_dashboard_unit">
+                            <div class="o_employee_dashboard_title">Monthly Statistics</div>
+                            <div class="o_graph_monthly_stats_chart" t-ref="monthly_stats_chart"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROLE-BASED METRICS SECTION -->
+                <div class="row o_employee_dashboard_row4">
+                    <!-- MANAGER METRICS -->
+                    <t t-if="state.is_hr_manager">
+                        <!-- Manager Approval Metrics -->
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">Leaves to Approve</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openLeavesToApprove">
+                                        <i class="fa fa-calendar"></i>
+                                        <span t-esc="state.manager_leaves_to_approve || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">Expenses to Approve</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openExpensesToApprove">
+                                        <i class="fa fa-credit-card"></i>
+                                        <span t-esc="state.manager_expenses_to_approve || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">Leaves Approved (This Month)</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openValidatedLeavesThisMonth">
+                                        <i class="fa fa-calendar"></i>
+                                        <span t-esc="state.manager_leaves_approved || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">Expenses Approved (This Month)</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openApprovedExpenses">
+                                        <i class="fa fa-check-circle"></i>
+                                        <span t-esc="state.manager_expenses_approved || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Manager Employee Metrics -->
+                        <div class="col-sm-4 col-lg-4 mt24">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">Total Employees</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#">
+                                        <i class="fa fa-users"></i>
+                                        <span t-esc="state.manager_total_employees || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-lg-4 mt24">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">Employees Checked In</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#">
+                                        <i class="fa fa-sign-in"></i>
+                                        <span t-esc="state.manager_employees_checked_in || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-lg-4 mt24">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">Absent Employees</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#">
+                                        <i class="fa fa-user-times"></i>
+                                        <span t-esc="state.manager_employees_absent || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    
+                    <!-- EMPLOYEE METRICS -->
+                    <t t-if="!state.is_hr_manager">
+                        <!-- Employee Own Metrics -->
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">My Leaves Pending</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openMyLeavesPending">
+                                        <i class="fa fa-hourglass-half"></i>
+                                        <span t-esc="state.employee_own_leaves_to_approve || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">My Expenses Pending</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openMyExpensesPending">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span t-esc="state.employee_own_expenses_to_approve || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">My Leaves Approved</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openMyLeavesApproved">
+                                        <i class="fa fa-thumbs-up"></i>
+                                        <span t-esc="state.employee_own_leaves_approved || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="o_employee_dashboard_unit">
+                                <div class="o_employee_dashboard_title">My Expenses Approved</div>
+                                <div class="o_employee_dashboard_count">
+                                    <a href="#" t-on-click="openMyExpensesApproved">
+                                        <i class="fa fa-check-circle"></i>
+                                        <span t-esc="state.employee_own_expenses_approved || 0"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Employee Attendance -->
+                        <div class="col-sm-12 mt24">
+                            <div class="o_employee_dashboard_attendance_card">
+                                <div class="attendance-header">
+                                    <h3><i class="fa fa-clock-o"></i> My Attendance Today</h3>
+                                </div>
+                                <div class="attendance-content">
+                                    <div class="attendance-status">
+                                        <div class="status-indicator" t-att-class="state.employee_own_attendance_status === 'Checked In' ? 'status-checked-in' : state.employee_own_attendance_status === 'Checked Out' ? 'status-checked-out' : 'status-not-checked'">
+                                            <i class="fa" t-att-class="state.employee_own_attendance_status === 'Checked In' ? 'fa-sign-in-alt' : state.employee_own_attendance_status === 'Checked Out' ? 'fa-sign-out-alt' : 'fa-clock-o'"></i>
+                                        </div>
+                                        <div class="status-details">
+                                            <div class="status-text">
+                                                <span t-esc="state.employee_own_attendance_status"/>
+                                            </div>
+                                            <div class="status-times">
+                                                <t t-if="state.employee_own_check_in_time">
+                                                    <span class="time-label">Check In: </span> 
+                                                    <span class="time-value" t-esc="state.employee_own_check_in_time"/>
+                                                </t>
+                                                <t t-if="state.employee_own_check_out_time">
+                                                    <span class="time-label"> | Check Out: </span>
+                                                    <span class="time-value" t-esc="state.employee_own_check_out_time"/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Contact Popup Modal -->
+        <div class="contact-popup-overlay" t-if="state.showContactPopup" t-on-click="hideContactPopup">
+            <div class="contact-popup-modal" t-on-click.stop="">
+                <div class="contact-popup-header">
+                    <h3><i class="fa fa-address-book"></i> Contact Information</h3>
+                    <button class="contact-popup-close" t-on-click="hideContactPopup">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div class="contact-popup-content">
+                    <div class="contact-item" t-if="state.contactInfo.phone">
+                        <div class="contact-icon-wrapper phone">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <label>Phone</label>
+                            <span t-esc="state.contactInfo.phone"/>
+                            <button class="contact-action-btn" t-on-click="() => this.callNumber(state.contactInfo.phone)">
+                                <i class="fa fa-phone"></i> Call
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item" t-if="state.contactInfo.mobile">
+                        <div class="contact-icon-wrapper mobile">
+                            <i class="fa fa-mobile"></i>
+                        </div>
+                        <div class="contact-details">
+                            <label>Mobile</label>
+                            <span t-esc="state.contactInfo.mobile"/>
+                            <button class="contact-action-btn" t-on-click="() => this.callNumber(state.contactInfo.mobile)">
+                                <i class="fa fa-mobile"></i> Call
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item" t-if="state.contactInfo.email">
+                        <div class="contact-icon-wrapper email">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <label>Email</label>
+                            <span t-esc="state.contactInfo.email"/>
+                            <button class="contact-action-btn" t-on-click="() => this.sendEmail(state.contactInfo.email)">
+                                <i class="fa fa-envelope"></i> Send Email
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item" t-if="state.contactInfo.department">
+                        <div class="contact-icon-wrapper department">
+                            <i class="fa fa-building"></i>
+                        </div>
+                        <div class="contact-details">
+                            <label>Department</label>
+                            <span t-esc="state.contactInfo.department"/>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item" t-if="state.contactInfo.manager">
+                        <div class="contact-icon-wrapper manager">
+                            <i class="fa fa-user-tie"></i>
+                        </div>
+                        <div class="contact-details">
+                            <label>Manager</label>
+                            <span t-esc="state.contactInfo.manager"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

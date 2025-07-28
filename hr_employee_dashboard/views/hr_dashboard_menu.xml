@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Dashboard Menu Item -->
+        <menuitem id="menu_hr_dashboard_main"
+                  name="Dashboard"
+                  parent="hr.menu_hr_root"
+                  action="action_hr_dashboard"
+                  sequence="1"/>
+    </data>
+</odoo>
