@@ -72,8 +72,9 @@
                 <xpath expr="//page[@name='public']" position="replace">                    
                     
                     <page name="public" string="Work Information">
-                        <div id="o_work_employee_container" class="d-lg-flex"> <!-- These two div are used to position org_chart -->
-                            <div id="o_work_employee_main" class="flex-grow-1">
+                        <div class="o_hr_form_layout d-lg-flex">
+                            <!-- Left Content -->
+                            <div class="flex-grow-1 pe-lg-4">
                                 <group string="WPS Details">
                                     <field name="personal_identification_number" string="Personal Identification Number"/>
                                     <!-- <field name="gm_id1" invisible="1"/>
@@ -112,7 +113,7 @@
                                
                                 
                                 <group string="Assets">
-                                    <field name="asset_line_ids" widget="one2many" nolabel="1">
+                                    <field name="asset_line_ids" nolabel="1">
                                         <list editable="bottom">
                                             <field name="asset_id"/>
                                             <field name="date_of_allocation"/>
