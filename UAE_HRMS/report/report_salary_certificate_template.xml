@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <template id="external_layout_custom">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+
+  <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+            <div  style="font-weight: 700;">
+            <div class="row mb8">
+                <div class="col-4" style="align:right;">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" style="max-height: 150px;"/>
+                </div>
+
+                <div class="col-4 " style="text-align:center;padding-top:50px;">
+
+
+                </div>
+                <div class="col-4 text-left mb4" name="company_address" style="color:black;margin-left:40px;font-size:12px;">
+
+                            <strong><span class="company_address_format" t-field="company.partner_id" /><br/></strong>
+                           <strong><t t-if="company.zip"></t> <t t-esc="'P.O. Box'"/>: <span t-field="company.zip"/><br/></strong>
+                    <strong><span class="company_address_format" t-field="company.partner_id.street"/><br/></strong>
+                            <strong><span class="company_address_format" t-field="company.partner_id.street2"/>,</strong>
+                            <strong><span class="company_address_format" t-field="company.partner_id.state_id.name" /></strong>
+                           <strong> <span class="company_address_format">, UAE</span><br/></strong>
+                    <strong>TEL: <span class="company_address_format" t-field="company.phone" /><br/></strong>
+                    <!-- <strong>FAX: <span class="company_address_format" t-field="company.fax" /><br/></strong> -->
+                         <strong> <t t-if="company.vat"> TRN#: <span t-field="company.vat"/></t></strong>
+
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-call="web.address_layout"/>
+            <t t-raw="0"/>
+        </div>
+
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+
+        </div>
+ </template>
+
+   <template id="report_hr_salary_certificate_template">
+<!-- 	    <t t-call="web.html_container"> -->
+<!-- 	        <t t-foreach="docs" t-as="doc"> -->
+	            <t t-call="UAE_HRMS.external_layout_custom">
+	                <div class="page" style="padding:80px;font-family:Tahoma;font-size:20px;">
+	                    <div class="oe_structure"/>
+
+<!--	                        <h2 style="text-align:center;">SALARY CERTIFICATE</h2>-->
+
+	                        <table width="100%" class="mt32 mb32">
+	                            <tr>
+
+	                                <td width="82%" height="30"><strong><span t-esc="doc.approved_date.strftime('%d-%b-%Y')"/></strong></td>
+	                            </tr>
+	                            <tr>
+	                                <td height="30">To,</td>
+
+	                            </tr>
+	                            <tr>
+	                                <td height="30"><strong><span t-esc="doc.to_address"/> </strong></td>
+
+	                            </tr>
+								<tr>
+									 <td height="30"><strong><span t-esc="doc.name_of_bank"/> </strong></td>
+								</tr><tr>
+									 <td height="30"><strong><span t-esc="doc.city"/> </strong></td>
+								</tr>
+
+<!-- 	                            <tr> -->
+<!-- 	                                <td height="30"><strong>Bank Address:</strong></td> -->
+<!-- 	                                <td height="30"><sapn t-field="doc.b_date"/></td> -->
+<!-- 	                            </tr> -->
+	                        </table>
+
+						<h6 style="text-align:center;font-family:Tahoma;font-size:20px;"><strong>Sub :-  <u style="padding-bottom:12px;">Salary Certificate</u></strong></h6>
+
+	                        <table width="100%" border="0" class="mt32 mb32">
+	                            <tr>
+	                                <td colspan="2">
+                                    <p><strong>Dear Sir,</strong></p>
+										<p>This is to certify that <b><span t-esc="doc.employee_id.country_id.name"/> </b>National&#160;<b>Mr./Ms&#160;<span t-esc="doc.employee_id.name"></span> </b>holder of passport No
+										<span t-esc="doc.employee_id.passport_id"/>&#160;is employed with <b>M/s WTC SYSTEMS LLC</b> from <span t-esc="doc.employee_id.date_of_join"/>&#160;as his/her
+											Total Monthly salary is ----------------
+										</p>
+                                      <p>This certificate is issued on behalf of the employee’s request and bears no financial
+responsibility on or behalf of any of the authorized signatories.</p>
+	                                </td>
+	                            </tr>
+	                        </table>
+
+
+
+	                        <p class="mt32 mb32">Yours Sincerely,</p>
+	                        <p class="mt32 mb32"><span t-esc="doc.approved_user.name"/></p>
+
+	                        <p style="margin-top : 80px"><span t-esc="doc.approved_user.job_id.name"/> </p>
+	                        <p style="margin-top : 20px"><span t-esc="doc.approved_user.company_id.name"/></p>
+
+
+
+
+	                    <div class="oe_structure"/>
+	                </div>
+	            </t>
+<!-- 	        </t> -->
+<!-- 	    </t> -->
+	</template>
+
+
+
+
+
+	<template id="report_salary_certificate">
+	    <t t-call="web.html_container">
+	        <t t-foreach="docs" t-as="doc">
+	        <t t-call="UAE_HRMS.report_hr_salary_certificate_template"/>
+	        </t>
+	    </t>
+	</template>
+
+
+
+
+
+</odoo>

@@ -97,7 +97,8 @@ class HrEmployeeRequest(models.Model):
                 self.approved_user = approved_user.id
             self.approved_date = datetime.today().date()
             if self.request_type == 'salary_cert':
-                rpt = self.env.ref('UAE_HRMS.action_report_salary_certificate').render_qweb_pdf(self.ids)
+                # rpt = self.env.ref('UAE_HRMS.action_report_salary_certificate').render_qweb_pdf(self.ids)
+                rpt = self.env['ir.actions.report'].sudo()._render_qweb_pdf('UAE_HRMS.action_report_salary_certificate', self.ids)
                 b64_pdf = base64.b64encode(rpt[0])
                 file_name = self.employee_id.name + '_' + dict(self._fields['request_type'].selection).get(
                     self.request_type)
@@ -105,7 +106,7 @@ class HrEmployeeRequest(models.Model):
                     'name': file_name,
                     'type': 'binary',
                     'datas': b64_pdf,
-                    'datas_fname': file_name,
+                    # 'datas_fname': file_name,
                     'store_fname': file_name,
                     'res_model': self._name,
                     'res_id': self.id,
