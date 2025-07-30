@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="web.NavBar" t-inherit-mode="extension">
+        <xpath expr="//div[contains(@class, 'o_menu_systray')]" position="before">
+            <div class="d-flex align-items-center ms-3">
+                <t t-set="company_id" t-value="this.state.currentCompanyId"/>
+                <t t-if="company_id">
+                    <img t-att-src="'/web/image/res.company/' + company_id + '/logo'"
+                        alt="Company Logo"
+                        class="o_navbar_company_logo"
+                        style="height: 32px; max-width: 120px; object-fit: contain;" />
+                </t>
+            </div>
+        </xpath>
+    </t>
+</templates>

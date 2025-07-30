@@ -1,0 +1,44 @@
+.o_home_menu_background, .o_web_client.o_home_menu_background {
+    background: url(/odoo_bg_updation/static/src/img/home-menu-bg-overlay.svg), linear-gradient(to right bottom, #619ed3, #05467e) !important;
+}
+
+.o_main_navbar {
+    background-color: transparent !important;
+}
+
+.o_home_menu .o_app .o_caption {
+    color: #ffffff !important; 
+}
+
+header.o_navbar {
+    background: #619ed3 !important;
+}
+
+.o_main_navbar .o_menu_sections .o_nav_entry, .o_main_navbar .o_menu_sections .dropdown-toggle {
+    background: #619ed3 !important;
+    color: #ffffff !important;
+}
+.o_main_navbar .o_menu_sections .o_nav_entry:hover, .o_main_navbar .o_menu_sections .dropdown-toggle:hover{
+    background: #e7e9ed !important;
+    color: #04569d !important;
+}
+
+.o_main_navbar .o_menu_brand, .o_main_navbar .o_navbar_breadcrumbs, .o_main_navbar .o_navbar_breadcrumbs .btn {
+    color: #ffffff !important;
+}
+
+.o_main_navbar .o_menu_toggle{
+    color: #ffffff !important;
+}
+
+.o-dropdown--menu .dropdown-item:not(.disabled):not(:disabled), .o-dropdown--menu .dropdown-item:not(.disabled):not(:disabled) label {
+    color: #04569d !important;
+}
+
+span.oe_topbar_name.d-none.d-lg-block.text-truncate {
+    color: #ffffff !important;
+}
+
+button.o-dropdown.dropdown-toggle.dropdown {
+    color: #ffffff !important;
+}

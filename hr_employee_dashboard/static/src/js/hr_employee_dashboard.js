@@ -600,6 +600,10 @@ export class HRDashboard extends Component {
     await this.render_graphs()
   }
 
+  openLeaves() {
+    this.env.services.action.doAction("hr_holidays.hr_leave_action_my")
+  }
+
   // Navigation methods
   openLeavesToApprove() {
     this.env.services.action.doAction("hr_holidays.hr_leave_action_action_approve_department")
