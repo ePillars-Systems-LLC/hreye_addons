@@ -536,14 +536,13 @@ class hr_payslip(models.Model):
                 total_actual_hours = 0
                 leave_data = payslip.employee_id.list_leaves(day_from, day_to,
                                                              calendar=payslip.contract_id.resource_calendar_id)
+                print("leave_data =============>> ",leave_data)
                 unpaid_leaves = 0
                 halfpaid_leaves = 0
                 paid_leaves = 0
                 annual_leave = 0
                 date_time_data = []
-                for ld in leave_data:
-
-                    print("ld =============>> ", ld)
+                for ld in leave_data:                   
 
                     resource_calendar = ld[2]
                     if resource_calendar.holiday_id and ld[0] not in date_time_data:
