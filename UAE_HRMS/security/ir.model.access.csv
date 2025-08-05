@@ -22,4 +22,3 @@ accwpess_payroll_s,access_payroll_wps,model_payroll_wps,hr.group_hr_manager,1,1,
 access_hr_employee_payroll_report_wiz,access_hr_employee_payroll_report_wiz,model_payroll_report_wiz,hr.group_hr_manager,1,1,1,1
 access_hr_employee_payroll_report_excel,access_hr_employee_payroll_report_excel,model_payroll_report_excel,hr.group_hr_manager,1,1,1,1
 access_uae_division,access_uae_division,model_division,base.group_user,1,1,1,1
-access_resource_uae,access_resource_uae,model_resource_resource,base.group_user,1,1,1,1
