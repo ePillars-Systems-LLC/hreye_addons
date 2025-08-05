@@ -21,3 +21,4 @@ access_lloan_payment_base_user,access_loan_payment_base_user,model_loan_payment,
 accwpess_payroll_s,access_payroll_wps,model_payroll_wps,hr.group_hr_manager,1,1,1,1
 access_hr_employee_payroll_report_wiz,access_hr_employee_payroll_report_wiz,model_payroll_report_wiz,hr.group_hr_manager,1,1,1,1
 access_hr_employee_payroll_report_excel,access_hr_employee_payroll_report_excel,model_payroll_report_excel,hr.group_hr_manager,1,1,1,1
+access_leave_salary,access_leave_salary,model_division,base.group_user,1,1,1,1
