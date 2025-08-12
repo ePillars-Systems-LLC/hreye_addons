@@ -322,6 +322,11 @@
             sequence="0" 
             parent="hr.menu_hr_root" 
             groups="base.group_user"/>
+
+        <!-- Activate Apps Menu only for Employee System Manager-->
+        <record id="base.menu_apps" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('base.group_system'))]"/>
+        </record>
        
 
        
