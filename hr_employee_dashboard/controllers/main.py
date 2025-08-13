@@ -34,7 +34,7 @@ class HRDashboardController(http.Controller):
             'dash_age': age,
             'dash_date_of_join': employee.date_of_join if employee and employee.date_of_join else 'Not Set',
             'dash_work_location': employee.work_location_id.name if employee and employee.work_location_id else 'Not Set',
-            'dash_contract': employee.contract_type.name if employee and employee.contract_type else 'Not Set',
+            'dash_contract': employee.contract_type if employee and employee.contract_type else 'Not Set',
 
         }
         
