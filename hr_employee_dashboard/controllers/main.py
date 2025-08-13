@@ -4,7 +4,7 @@ import json
 import base64
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
-
+from datetime import date
 class HRDashboardController(http.Controller):
 
     @http.route('/hr_employee_dashboard/dashboard_employee_data', type='json', auth='user')
@@ -15,7 +15,10 @@ class HRDashboardController(http.Controller):
         
         # Get employee record
         employee = request.env['hr.employee'].sudo().search([('user_id', '=', user.id)], limit=1)
-        
+        today = date.today()
+        age = 0
+        if employee.birthday:
+            age = today.year - employee.birthday.year
         # Base data structure
         data = {
             'dash_employee_id': employee.id if employee else False,
@@ -26,6 +29,13 @@ class HRDashboardController(http.Controller):
             'is_hr_manager': is_manager,
             'dash_holidays_filter_report_view_id': False,
             'dash_holidays_filter_view_id': False,
+            'dash_gender': employee.gender,
+            'dash_country': employee.country_id.name,
+            'dash_age': age,
+            'dash_date_of_join': employee.date_of_join if employee and employee.date_of_join else 'Not Set',
+            'dash_work_location': employee.work_location_id.name if employee and employee.work_location_id else 'Not Set',
+            'dash_contract': employee.contract_type.name if employee and employee.contract_type else 'Not Set',
+
         }
         
         # Add demographic data

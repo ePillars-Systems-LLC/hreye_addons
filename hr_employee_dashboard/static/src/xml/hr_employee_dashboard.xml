@@ -57,17 +57,17 @@
                                         </div>
                                         <div class="col">
                                             <div class="o_employee_dashboard_name_title" style="text-align: left; font-size:12px;">
-                                                <div class="o_employee_dashboard_title_left"><strong>Gender:</strong> <span>Male</span></div>
-                                                <div class="o_employee_dashboard_title_left"><strong>Country:</strong> <span>Indian</span></div>
-                                                <div class="o_employee_dashboard_title_left"><strong>Age:</strong> <span>30 Years</span></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Gender : </strong> <span t-esc="state.dash_gender"/></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Country : </strong><span t-esc="state.dash_country"/></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Age : </strong><span t-esc="state.dash_age"/></div>
                                                 
                                             </div>                                            
                                         </div>
                                         <div class="col">
                                             <div class="o_employee_dashboard_name_title" style="text-align: left; font-size:12px;">
-                                                <div class="o_employee_dashboard_title_left"><strong>Date of Joining:</strong> <span>01-Jan-2010</span></div>
-                                                <div class="o_employee_dashboard_title_left"><strong>Work Location:</strong> <span>Dubai</span></div>
-                                                <div class="o_employee_dashboard_title_left"><strong>Contract:</strong> <span>Contract 2025</span></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Date of Joining : </strong> <span t-esc="state.dash_date_of_join"/></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Work Location : </strong><span t-esc="state.dash_work_location"/> </div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Contract : </strong> <span t-esc="state.dash_contract"/></div>
                                                 
                                             </div>                                            
                                         </div>

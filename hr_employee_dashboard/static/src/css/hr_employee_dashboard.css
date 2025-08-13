@@ -67,8 +67,7 @@
   font-size: 14px;
   font-weight: 500;
   color: #2c3e50;
-  margin-bottom: 8px;
-  padding-bottom: 6px;
+  margin-bottom: 4px;  
   text-align: left;
 }
 
@@ -95,8 +94,8 @@
 
 .o_employee_dashboard_thumbnail_emp img {
   border-radius: 50%;
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  height: 60%;
   object-fit: cover;
   border: 3px solid #3498db;
 }
