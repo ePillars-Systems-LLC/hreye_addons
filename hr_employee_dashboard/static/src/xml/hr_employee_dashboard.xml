@@ -28,7 +28,7 @@
                             <div  class="row">                                
                                 <div class="col">  
                                     <div  class="row">                              
-                                          <div class="o_employee_dashboard_title"  style="text-align: left;">Welcome,<span t-esc="state.dash_name"/></div>                                      
+                                          <div class="o_employee_dashboard_title_welcome"  style="text-align: left;">Welcome,<span t-if="state.dash_gender == 'male'"> Mr.</span> <span t-if="state.dash_gender == 'female'"> Ms.</span> <span t-esc="state.dash_name"/></div>                                      
                                     </div>     
                                     <div  class="row">
                                         

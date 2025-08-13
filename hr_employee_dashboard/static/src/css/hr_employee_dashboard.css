@@ -71,6 +71,16 @@
   text-align: left;
 }
 
+.o_employee_dashboard_title_welcome {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3498db;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #3498db;
+  text-align: left;
+}
+
 .o_employee_dashboard_thumbnail {
   text-align: center;
   margin-bottom: 15px;
