@@ -31,6 +31,7 @@ export class HRDashboard extends Component {
       dash_job_name: false,
       dash_name: false,
       dash_leaves_count: false,
+      dash_paslips_count: false,
       dash_male_count: false,
       dash_female_count: false,
       dash_top_nationalities_count: false,
@@ -137,6 +138,7 @@ export class HRDashboard extends Component {
       this.state.employee_own_check_in_time = data.employee_own_check_in_time
       this.state.employee_own_check_out_time = data.employee_own_check_out_time
       this.state.dash_leaves_count = data.dash_leaves_count
+      this.state.dash_payslips_count = data.dash_payslips_count
       this.state.dash_male_count = data.dash_male_count
       this.state.dash_female_count = data.dash_female_count
       this.state.dash_top_nationalities_count = data.dash_top_nationalities_count
@@ -603,7 +605,9 @@ export class HRDashboard extends Component {
   openLeaves() {
     this.env.services.action.doAction("hr_holidays.hr_leave_action_my")
   }
-
+  openPaySlips() {
+    this.env.services.action.doAction("UAE_HRMS.hr_payslip_action_my")
+  }
   // Navigation methods
   openLeavesToApprove() {
     this.env.services.action.doAction("hr_holidays.hr_leave_action_action_approve_department")

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_public_form_view_my_profile_inherit" model="ir.ui.view">
+                <field name="name">hr.employee.public.leave.form.my.profile.inherit</field>
+                <field name="model">hr.employee.public</field>
+                <field name="inherit_id" ref="hr.hr_employee_public_view_form"/>
+                <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_open_my_payslips"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-money"
+                        >
+                        <div>
+                            <span>My Payslips</span>
+                        </div>
+                    </button>
+
+                    <button name="%(hr_holidays.hr_leave_action_new_request)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-calendar"
+                        invisible="not show_leaves"
+                        groups="base.group_user"
+                        help="Remaining leaves">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="allocation_remaining_display"/>/<field name="allocation_display"/> Days
+                        </span>
+                        <span class="o_stat_text">
+                            Time Off
+                        </span>
+                    </div>
+                </button>
+                </xpath>
+                <xpath expr="//page[@name='skills_resume']" position="before">
+                    <page name="public_details" string="Details">
+                        <group>
+                            <group>
+                                <group string="Passport">
+                                    <field name="passport_id"/>
+                                    <field name="passport_start_date"/>
+                                    <field name="passport_expiry_date"/>
+                                </group>
+                                <group string="Visa">
+                                    <field name="visa_no"/>
+                                    <field name="attendance_checked_in" invisible="1"/>
+                                    <field name="visa_start_date"/>
+                                    <field name="visa_end_date"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Labour Card">
+                                    <field name="labour_card_no"/>
+                                    <field name="labour_card_issue_date"/>
+                                    <field name="labour_card_expiry_date"/>
+                                </group>
+                                <group string="Health Card">
+                                    <field name="health_card_no"/>
+                                    <field name="health_card_issue_date"/>
+                                    <field name="health_card_expiry_date"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Emirates Id">
+                                    <field name="emirates_id_no"/>
+                                    <field name="emirates_id_expiry_date"/>
+                                </group>
+                                <group string="Air Ticket">
+                                    <field name="airticket_allowance"/>
+                                    <field name="airticket_allowance_amount"/>
+                                    <field name="number_of_persons_eligible"/>
+                                </group>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                
+                </field>
+            </record>
+
+
+            <menuitem
+                id="menu_hr_my_profile"
+                name="My Profile"
+                action="hr.hr_employee_public_action"
+                parent="hr.menu_hr_root"
+                sequence="3"/>
+
+
+      
+
+	
+    </data>
+</odoo>

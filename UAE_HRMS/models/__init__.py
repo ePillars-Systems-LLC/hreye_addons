@@ -1,5 +1,6 @@
 from . import employee_assets
 from . import hr
+from . import hr_employee_public
 from . import hr_gratuity
 from . import leave_salary
 from . import hr_payroll

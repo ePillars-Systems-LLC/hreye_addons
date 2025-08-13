@@ -144,6 +144,13 @@
 	       </field>
         </record>
 
+		<record id="hr_payslip_action_my" model="ir.actions.act_window">
+			<field name="name">My Payslips</field>
+			<field name="res_model">hr.payslip</field>
+			<field name="view_mode">list,form</field>			
+			<field name="domain">[('employee_id.user_id', '=', uid)]</field>			
+		</record>
+
         
     </data>
 </odoo>

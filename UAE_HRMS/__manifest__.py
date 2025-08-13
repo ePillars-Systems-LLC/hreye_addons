@@ -23,6 +23,7 @@
         'views/employee_assets_view.xml',
         'views/hr_leave_type.xml',             
         'views/hr_view.xml',
+        'views/hr_employee_public_views.xml',
         'views/hr_forms_view.xml',
         'views/loan_application_view.xml',
         'views/hr_employee_request_view.xml',

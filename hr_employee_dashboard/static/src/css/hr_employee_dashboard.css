@@ -63,15 +63,40 @@
   text-align: center;
 }
 
+.o_employee_dashboard_title_left {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  text-align: left;
+}
+
 .o_employee_dashboard_thumbnail {
   text-align: center;
   margin-bottom: 15px;
 }
 
+
+
 .o_employee_dashboard_thumbnail img {
   border-radius: 50%;
   width: 80px;
   height: 80px;
+  object-fit: cover;
+  border: 3px solid #3498db;
+}
+
+.o_employee_dashboard_thumbnail_emp {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+.o_employee_dashboard_thumbnail_emp img {
+  border-radius: 50%;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
   border: 3px solid #3498db;
 }

@@ -21,6 +21,92 @@
     <t t-name="hr_employee_dashboard.dashboard_content">
         <div class="o_employee_dashboard_content">
             <div class="container" id="dashboard_container">
+
+                <div t-if="!state.is_hr_manager "  class="row o_employee_dashboard_row1">                    
+                    <div>
+                        <div class="o_employee_dashboard_unit" style="margin-bottom: 1px;">
+                            <div  class="row">                                
+                                <div class="col">  
+                                    <div  class="row">                              
+                                          <div class="o_employee_dashboard_title"  style="text-align: left;">Welcome,<span t-esc="state.dash_name"/></div>                                      
+                                    </div>     
+                                    <div  class="row">
+                                        
+                                        <div class="col">
+                                            <div class="o_employee_dashboard_thumbnail_emp">
+                                                <t t-if="state.dash_image">
+                                                    <img t-att-src="'data:image/png;base64,'+ state.dash_image" alt="Image" class="img img-circle"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <div class="default-avatar">
+                                                        <i class="fa fa-user fa-3x"></i>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="o_employee_dashboard_name_title" style="text-align: left">
+                                                <h1 t-if="state.dash_name"><span t-esc="state.dash_name"/></h1>
+                                                <h3 t-if="state.dash_job_name"><span t-esc="state.dash_job_name"/></h3>
+                                            </div>
+                                            <div class="o_employee_dashboard_info_user" style="text-align: left">
+                                                <span class="fa fa-phone contact-icon" role="img" aria-label="Phone" title="Phone" t-on-click="showContactPopup" data-contact-type="phone"/>
+                                                <span class="fa fa-mobile contact-icon" role="img" aria-label="Mobile" title="Mobile" t-on-click="showContactPopup" data-contact-type="mobile"/>
+                                                <span class="fa fa-envelope contact-icon" role="img" aria-label="Email" title="Email" t-on-click="showContactPopup" data-contact-type="email"/>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="o_employee_dashboard_name_title" style="text-align: left; font-size:12px;">
+                                                <div class="o_employee_dashboard_title_left"><strong>Gender:</strong> <span>Male</span></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Country:</strong> <span>Indian</span></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Age:</strong> <span>30 Years</span></div>
+                                                
+                                            </div>                                            
+                                        </div>
+                                        <div class="col">
+                                            <div class="o_employee_dashboard_name_title" style="text-align: left; font-size:12px;">
+                                                <div class="o_employee_dashboard_title_left"><strong>Date of Joining:</strong> <span>01-Jan-2010</span></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Work Location:</strong> <span>Dubai</span></div>
+                                                <div class="o_employee_dashboard_title_left"><strong>Contract:</strong> <span>Contract 2025</span></div>
+                                                
+                                            </div>                                            
+                                        </div>
+                                         <div  class="col">
+                                            <div class="o_employee_dashboard_info_user_l m-1">
+                                                <div class="innerbox" id="dashboard_leaves_left">
+                                                    <a href="#" t-on-click="openLeaves">
+                                                        <span class="fa fa-fw o_button_icon fa-calendar"></span>
+                                                        <t t-if="state.dash_leaves_count">
+                                                            Remaining Leaves - <span t-esc="state.dash_leaves_count"/>
+                                                        </t>
+                                                    </a>
+                                                </div>                                
+                                            </div>
+                                            <div class="o_employee_dashboard_info_user_l  m-1">
+                                                <div class="innerbox" id="dashboard_leaves_left">
+                                                    <a href="#" t-on-click="openPaySlips">
+                                                        <span class="fa fa-fw o_button_icon fa-money"></span>
+                                                        Payslips 
+                                                    </a>
+                                                </div>                                
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                               
+                                
+                            </div>
+                            
+                            
+                           
+                    
+                            
+                        </div>
+                    </div>
+
+                </div>
             
                 <!-- EXISTING DASHBOARD SECTIONS (User Profile, Demographics, Charts) -->
                 <!-- Keep all the existing dashboard sections here -->
@@ -31,7 +117,7 @@
                             <div class="o_employee_dashboard_title">User Profile</div>
                             <div class="o_employee_dashboard_thumbnail">
                                 <t t-if="state.dash_image">
-                                    <img t-att-src="'data:image/png;base64,'+ state.dash_image" alt="Image" class="img img-circle w-50 h-50"/>
+                                    <img t-att-src="'data:image/png;base64,'+ state.dash_image" alt="Image" class="img img-circle w-70 h-70"/>
                                 </t>
                                 <t t-else="">
                                     <div class="default-avatar">
