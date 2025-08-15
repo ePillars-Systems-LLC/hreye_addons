@@ -12,7 +12,7 @@ class HRDashboardController(http.Controller):
         """Get dashboard data in the format expected by the frontend"""
         user = request.env.user
         is_manager = user.has_group('hr.group_hr_manager') or user.has_group('hr.group_hr_user')
-        
+        company = request.env.company
         # Get employee record
         employee = request.env['hr.employee'].sudo().search([('user_id', '=', user.id)], limit=1)
         today = date.today()
@@ -35,6 +35,7 @@ class HRDashboardController(http.Controller):
             'dash_date_of_join': employee.date_of_join if employee and employee.date_of_join else 'Not Set',
             'dash_work_location': employee.work_location_id.name if employee and employee.work_location_id else 'Not Set',
             'dash_contract': employee.contract_type if employee and employee.contract_type else 'Not Set',
+            'dash_company_logo': company.logo
 
         }
         

@@ -27,9 +27,17 @@
                         <div class="o_employee_dashboard_unit" style="margin-bottom: 1px;">
                             <div  class="row">                                
                                 <div class="col">  
-                                    <div  class="row">                              
-                                          <div class="o_employee_dashboard_title_welcome"  style="text-align: left;">Welcome,<span t-if="state.dash_gender == 'male'"> Mr.</span> <span t-if="state.dash_gender == 'female'"> Ms.</span> <span t-esc="state.dash_name"/></div>                                      
-                                    </div>     
+                                    <div  class="row o_employee_company_logo" style="display:flex; justify-content:flex-end;">                              
+                                          <!-- <div class="o_employee_dashboard_title_welcome"  style="text-align: left;">Welcome, <span t-esc="state.dash_name"/></div>  
+                                                                                -->
+                                            <t t-if="state.dash_company_logo">
+                                                    <img t-att-src="'data:image/png;base64,'+ state.dash_company_logo" alt="Image" />
+                                            </t>
+                                                                               
+                                    </div>
+                                    <div  class="row"> 
+                                        <div class="o_employee_dashboard_title_welcome"  style="text-align: left;"></div>    
+                                    </div>   
                                     <div  class="row">
                                         
                                         <div class="col">
@@ -90,6 +98,7 @@
                                                     </a>
                                                 </div>                                
                                             </div>
+                                            
 
                                         </div>
                                     </div>

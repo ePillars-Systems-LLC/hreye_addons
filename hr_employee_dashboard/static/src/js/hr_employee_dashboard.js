@@ -34,7 +34,8 @@ export class HRDashboard extends Component {
       dash_country: false,
       dash_age: false,   
       dash_date_of_join: false,  
-      dash_work_location: false,  
+      dash_work_location: false,
+      dash_company_logo: false,  
       dash_contract: false,  
       dash_leaves_count: false,
       dash_paslips_count: false,
@@ -132,7 +133,8 @@ export class HRDashboard extends Component {
       this.state.dash_date_of_join = data.dash_date_of_join
       this.state.dash_work_location = data.dash_work_location
       this.state.dash_contract = data.dash_contract
-      this.state.is_hr_manager = data.is_hr_manager
+      this.state.is_hr_manager = data.is_hr_manager 
+      this.state.dash_company_logo = data.dash_company_logo
       // Manager-specific metrics
       this.state.manager_leaves_to_approve = data.manager_leaves_to_approve
       this.state.manager_expenses_to_approve = data.manager_expenses_to_approve

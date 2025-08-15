@@ -96,6 +96,15 @@
   border: 3px solid #3498db;
 }
 
+
+.o_employee_company_logo {
+  border-radius: 5%;
+  width: 200px;
+  height: 40px;
+  object-fit: cover;
+}
+
+
 .o_employee_dashboard_thumbnail_emp {
   text-align: center;
   margin-bottom: 15px;
@@ -107,7 +116,7 @@
   width: 60%;
   height: 60%;
   object-fit: cover;
-  border: 3px solid #3498db;
+  border: 2px solid #3498db;
 }
 
 .default-avatar {
