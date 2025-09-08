@@ -22,4 +22,8 @@ accwpess_payroll_s,access_payroll_wps,model_payroll_wps,hr.group_hr_manager,1,1,
 access_hr_employee_payroll_report_wiz,access_hr_employee_payroll_report_wiz,model_payroll_report_wiz,hr.group_hr_manager,1,1,1,1
 access_hr_employee_payroll_report_excel,access_hr_employee_payroll_report_excel,model_payroll_report_excel,hr.group_hr_manager,1,1,1,1
 access_uae_division,access_uae_division,model_division,base.group_user,1,1,1,1
-access_hr_payslip_employee,access_hr_payslip_employee,hr_payroll.model_hr_payslip,base.group_user,1,0,0,0
+access_hr_payslip_employee,access_hr_payslip_employee,hr_payroll.model_hr_payslip,base.group_user,1,1,0,0
+access_hr_payslip_line_employee,access_hr_payslip_line_employee,hr_payroll.model_hr_payslip_line,base.group_user,1,1,0,0
+access_hr_payslip_worked_days_user,access_hr_payslip_worked_days_user,hr_payroll.model_hr_payslip_worked_days,base.group_user,1,0,0,0
+access_hr_payslip_input_user,access_hr_payslip_input_user,hr_payroll.model_hr_payslip_input,base.group_user,1,0,0,0
+access_hr_contract_user_uae,access_hr_contract_user_uae,model_hr_contract,base.group_user,1,0,0,0
